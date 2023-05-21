@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    env: {
+        airTable_baseId: "",
+        airTable_apiKey: ""
+    }
+}
 
 module.exports = nextConfig
