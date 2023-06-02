@@ -1,0 +1,20 @@
+type Staff = {
+  StaffId: string;
+  FullName: string;
+  Portrait: Attachments[];
+  Gender: string;
+  DateOfBirth: Date;
+  Phone: string;
+  PersonalEmail: string;
+  RoleType: any[];
+  Company: any[];
+  CurrentWorkingPlace: any[];
+  DatabaseAccessibility: any[];
+  ContractType: string;
+  WorkingType: string;
+  WorkingPeriod: string;
+  WorkingStatus: string;
+  StartWorkingDay: Date;
+  MarriageStatus: string;
+  HealthStatus: string;
+};

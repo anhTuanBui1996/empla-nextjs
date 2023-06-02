@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    env: {
-        airTable_baseId: "",
-        airTable_apiKey: ""
-    }
-}
+  distDir: 'build',
+  env: {
+    airTable_baseId: "tblgbDNW38UWOV1bb",
+    airTable_apiKey: "patEDP0p9erQ4fhWC",
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
