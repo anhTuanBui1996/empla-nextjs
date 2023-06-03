@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <PrimarySearchAppBar />
-        <GlobalLoading />
+        {/* <PrimarySearchAppBar />
+        <GlobalLoading /> */}
         {children}
       </body>
     </html>

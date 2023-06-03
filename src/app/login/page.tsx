@@ -8,10 +8,12 @@ export default function Login() {
         sx={{
           width: 300,
           height: 300,
-          backgroundColor: "primary.dark",
+          backgroundColor: "primary.main",
           borderRadius: "2%"
         }}
-      />
+      >
+        <span>Login to Empla</span>
+      </Box>
     </main>
   );
 }
