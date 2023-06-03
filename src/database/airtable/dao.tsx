@@ -1,4 +1,5 @@
-import { base, airtable } from "./init";
+import base from "./init";
+
 function table(tableName: string) {
   return base(tableName);
 }

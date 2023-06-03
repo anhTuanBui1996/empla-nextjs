@@ -25,8 +25,8 @@ export default function LeftSideMenu({ isMenuOpen }: { isMenuOpen: boolean }) {
       }}
     >
       <MenuList>
-        {LeftSideMenuList.personalDefinition.map((menuItem) => (
-          <Link href={menuItem.urlPattern}>
+        {LeftSideMenuList.personalDefinition.map((menuItem, index) => (
+          <Link href={menuItem.urlPattern} key={index}>
             <MenuItem>
               <ListItemIcon>{menuItem.icon}</ListItemIcon>
               <ListItemText>{menuItem.name}</ListItemText>
@@ -34,8 +34,8 @@ export default function LeftSideMenu({ isMenuOpen }: { isMenuOpen: boolean }) {
           </Link>
         ))}
         <Divider className="my-2" />
-        {LeftSideMenuList.dataDefinition.map((menuItem) => (
-          <Link href={menuItem.urlPattern}>
+        {LeftSideMenuList.dataDefinition.map((menuItem, index) => (
+          <Link href={menuItem.urlPattern} key={index}>
             <MenuItem>
               <ListItemIcon>{menuItem.icon}</ListItemIcon>
               <ListItemText>{menuItem.name}</ListItemText>

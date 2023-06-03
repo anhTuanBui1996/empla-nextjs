@@ -1,10 +1,11 @@
 import Airtable from "airtable";
 
-let { baseId, apiKey } = process.env;
+let baseId = process.env.airTable_baseId;
+let apiKey = process.env.airTable_apiKey;
 
-export const airtable = Airtable.configure({
+const airtable = new Airtable({
   endpointUrl: "https://api.airtable.com",
   apiKey,
 });
 
-export const base = Airtable.base(baseId || "");
+export default airtable.base(baseId || "");

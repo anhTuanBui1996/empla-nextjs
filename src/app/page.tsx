@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { getAllRecords } from '@/database/airtable/dao'
 
 export default function Dashboard() {
   return (

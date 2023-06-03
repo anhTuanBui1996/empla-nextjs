@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -111,7 +112,7 @@ export default function PrimarySearchAppBar() {
       setLeftSideMenuOpen(false);
       setClickAwayLeftSideMenu(false);
     }
-  }, [isClickAwayLeftSideMenu]);
+  }, [isClickAwayLeftSideMenu, isLeftSideMenuOpen]);
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (

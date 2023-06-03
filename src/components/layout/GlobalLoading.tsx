@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function GlobalLoading() {
@@ -18,12 +19,12 @@ export default function GlobalLoading() {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [intervalId]);
   useEffect(() => {
-    if (currentProgress >= maxValue) {
+    if (currentProgress >= maxValue && intervalId) {
       clearInterval(intervalId);
     }
-  }, [currentProgress]);
+  }, [currentProgress, intervalId, maxValue]);
 
   return (
     <div
