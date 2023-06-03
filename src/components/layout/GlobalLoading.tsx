@@ -19,12 +19,12 @@ export default function GlobalLoading() {
     return () => {
       clearInterval(intervalId);
     };
-  }, [intervalId]);
+  }, []);
   useEffect(() => {
     if (currentProgress >= maxValue && intervalId) {
       clearInterval(intervalId);
     }
-  }, [currentProgress, intervalId, maxValue]);
+  }, [currentProgress, intervalId]);
 
   return (
     <div
