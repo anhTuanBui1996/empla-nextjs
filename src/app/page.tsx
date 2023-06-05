@@ -1,9 +1,8 @@
-import { getAllRecords } from '@/database/airtable/dao'
-
-export default function Dashboard() {
+"use client"
+export default function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Test
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      
     </main>
-  )
+  );
 }

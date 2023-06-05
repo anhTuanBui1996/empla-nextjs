@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -182,8 +182,8 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }} position="fixed" top={0} width="100%">
+      <AppBar position="sticky">
         <Toolbar>
           <IconButton
             size="large"
@@ -258,7 +258,7 @@ export default function PrimarySearchAppBar() {
         onClickAway={handleClickAwayLeftSideMenu}
         disableReactTree={true}
       >
-        <div className="left-side-menu-click-away-container">
+        <div className="left-side-menu-click-away-container fixed h-screen w-60 z-50">
           <LeftSideMenu isMenuOpen={isLeftSideMenuOpen} />
         </div>
       </ClickAwayListener>

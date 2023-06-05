@@ -5,9 +5,6 @@ import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import HomeIcon from "@mui/icons-material/Home";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { LeftSideMenuList } from "@/utils/LeftSideMenuList";
 import Link from "next/link";
 
@@ -15,13 +12,14 @@ export default function LeftSideMenu({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <Paper
       sx={{
-        width: 250,
+        width: 240,
         height: "100%",
         maxWidth: "100%",
         position: "absolute",
-        left: isMenuOpen ? 0 : -250,
+        left: isMenuOpen ? 0 : -240,
         transition: "left .5s",
-        paddingY: "8px"
+        paddingY: "8px",
+        borderRadius: 0,
       }}
     >
       <MenuList>

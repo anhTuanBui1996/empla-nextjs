@@ -1,7 +1,12 @@
-import { createContext } from "react";
+"use client";
+import { createContext, useContext } from "react";
 
-export const FetchContext = createContext({
+export const FetchDefaultContext = createContext({
   responseValue: null,
-  fetchedTime: 0,
-  status: false,
+  fetchedAsyncCount: 0,
+  status: [],
 });
+
+export function useFetch() {
+  return useContext(FetchDefaultContext);
+}

@@ -17,8 +17,12 @@ export function getAllRecords(tableName: string) {
   return table(tableName).select();
 }
 
-export function getRecordsWhere(tableName: string, expression: string) {
-  return table(tableName).select({ filterByFormula: expression });
+export function getRecordsWhere(
+  tableName: string,
+  expression: string,
+  fields?: string[]
+) {
+  return table(tableName).select({ filterByFormula: expression, fields });
 }
 
 export function addRecord(tableName: string, object: object) {
