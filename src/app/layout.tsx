@@ -1,7 +1,4 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const metadata = {
   title: "Empla - Human Resources Management Application",
@@ -15,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

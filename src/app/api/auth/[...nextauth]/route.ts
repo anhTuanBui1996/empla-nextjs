@@ -16,15 +16,19 @@ const authOptions: AuthOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: Record<string, string> | undefined) {
+      async authorize(credentials: Record<string, string> | undefined, req) {
         try {
+          const { username, password } = credentials as {
+            username: string;
+            password: string;
+          };
           // Add logic here to look up the user from the credentials supplied
           const result = await getRecordsWhere(
             "Staff",
-            `AND(OR(Account = '${credentials?.username}', PersonalEmail = '${credentials?.username}'), Password = '${credentials?.password}')`,
+            `AND(OR(Account = '${username}', PersonalEmail = '${username}'), Password = '${password}')`,
             ["FullName", "RoleType", "Avatar"]
           ).all();
-            
+
           if (result.length) {
             return result[0]._rawJson;
           } else {
@@ -45,9 +49,7 @@ const authOptions: AuthOptions = {
       return true;
     },
   },
-  pages: {
-    
-  }
+  pages: {},
   // add more config options here
 };
 

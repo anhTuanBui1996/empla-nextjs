@@ -6,8 +6,6 @@ import {
   Link,
   Button,
   CircularProgress,
-  FormGroup,
-  FormControl,
 } from "@mui/material";
 import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -16,7 +14,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "../../../../components/misc/GoogleIcon";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { signIn } from "next-auth/react";
-import { getRecordsWhere } from "@/database/airtable/dao";
+import { useRouter } from "next/navigation";
 
 type User = {
   username: string;
@@ -28,13 +26,12 @@ const theme = createTheme({
     secondary: {
       main: grey[800],
     },
-    info: {
-      main: "#d0d0d0",
-    },
   },
 });
 
-export default function Login() {
+export default function SignIn() {
+  const router = useRouter();
+
   const [user, setUser] = useState<User>({ username: "", password: "" });
   const [isSignedIn, setSignedIn] = useState<boolean | undefined>(false);
 
@@ -51,15 +48,20 @@ export default function Login() {
   };
 
   // Login provider click handlers
-  const handleMainLoginClick = (
+  const handleMainLoginClick = async (
     e: MouseEvent<HTMLButtonElement | MouseEvent>
   ) => {
-    setSignedIn(undefined);
     e.preventDefault();
-    signIn("credentials", { ...user, redirect: false }).then((res) => {
-      console.log(res);
-      setSignedIn(true);
-    });
+    setSignedIn(undefined);
+    const result = await signIn("credentials", { ...user, redirect: false });
+    if (result?.ok) {
+      if (result?.error) {
+        setSignedIn(false);
+      } else {
+        setSignedIn(true);
+      }
+    }
+    setSignedIn(true);
   };
 
   const handleGithubLoginClick = () => {};
@@ -68,11 +70,16 @@ export default function Login() {
 
   const handleFacebookLoginClick = () => {};
 
+  useEffect(() => {
+    if (isSignedIn) router.push("/dashboard");
+  }, [isSignedIn]);
+
   return (
     <main className="flex h-screen flex-col items-center justify-between">
       <Paper
         sx={{
-          width: 400,
+          width: 350,
+          minWidth: 350,
           height: "70%",
           minHeight: 500,
           margin: "auto",
@@ -121,7 +128,10 @@ export default function Login() {
             <Link
               href="/forgot"
               className="forgot-password"
-              style={{ fontSize: "12px" }}
+              style={{
+                fontSize: "10px",
+                fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
+              }}
               underline="hover"
             >
               Forgot password?
@@ -129,10 +139,13 @@ export default function Login() {
             <Link
               href="/register"
               className="register-account"
-              style={{ fontSize: "12px" }}
+              style={{
+                fontSize: "10px",
+                fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
+              }}
               underline="hover"
             >
-              Don&apos;t have an account...
+              Sign up for Guests!
             </Link>
           </div>
           <div className="login flex-col justify-between align-middle">
@@ -174,7 +187,7 @@ export default function Login() {
               </Button>
               <Button
                 variant="contained"
-                color="info"
+                color="inherit"
                 fullWidth
                 onClick={handleGoogleLoginClick}
                 startIcon={<GoogleIcon />}
